@@ -14,6 +14,10 @@ window.EDITOR_CONFIG = {
   /* ---- API Endpoint (Vercel Serverless Function) ---- */
   apiEndpoint: '/api/apply-edits',
 
+  /* ---- API認証シークレット (Vercel EDITOR_API_SECRET と同じ値) ---- */
+  /* ⚠️ 本番では環境変数経由で注入するか、別途認証フローを構築 */
+  apiSecret: null,  // Vercel Dashboard で EDITOR_API_SECRET を設定後、ここに同じ値を入れる
+
   /* ---- ページ一覧 ---- */
   pages: [
     { path: '/mock1/',            name: 'Home',           label: 'トップページ' },

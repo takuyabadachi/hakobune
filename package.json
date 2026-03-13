@@ -1,0 +1,31 @@
+{
+  "name": "@takuyabadachi/content-editor",
+  "version": "1.0.0",
+  "description": "Inline content editor for static websites. Clients edit text directly on the page, changes auto-save and commit via GitHub API.",
+  "main": "editor.js",
+  "files": [
+    "editor.js",
+    "editor-config.example.js",
+    "middleware.js",
+    "api/apply-edits.js",
+    "edit/index.html",
+    "README.md"
+  ],
+  "keywords": [
+    "content-editor",
+    "inline-editing",
+    "static-site",
+    "vercel",
+    "github-api",
+    "contenteditable"
+  ],
+  "author": "Takuya Badachi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/takuyabadachi/content-editor"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
