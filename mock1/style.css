@@ -1,6 +1,6 @@
 /* ============================================================
    HAKOBUNE INC. — Design System
-   Based on Luxury Brand Website Analysis Patterns
+   Based on mock1 Luxury Brand Design
    ============================================================ */
 
 /* --- Google Fonts Import --- */
@@ -114,6 +114,7 @@ ol {
   max-width: 600px;
 }
 
+/* --- Buttons --- */
 .btn {
   display: inline-block;
   border: 1px solid currentColor;
@@ -175,29 +176,12 @@ ol {
   transform: translateY(0);
 }
 
-.fade-in-delay-1 {
-  transition-delay: 0.1s;
-}
-
-.fade-in-delay-2 {
-  transition-delay: 0.2s;
-}
-
-.fade-in-delay-3 {
-  transition-delay: 0.3s;
-}
-
-.fade-in-delay-4 {
-  transition-delay: 0.4s;
-}
-
-.fade-in-delay-5 {
-  transition-delay: 0.5s;
-}
-
-.fade-in-delay-6 {
-  transition-delay: 0.6s;
-}
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+.fade-in-delay-5 { transition-delay: 0.5s; }
+.fade-in-delay-6 { transition-delay: 0.6s; }
 
 /* ============================================================
    HEADER / NAVIGATION
@@ -454,17 +438,9 @@ ol {
 }
 
 @keyframes scrollLine {
-  0% {
-    top: -100%;
-  }
-
-  50% {
-    top: 100%;
-  }
-
-  100% {
-    top: 100%;
-  }
+  0% { top: -100%; }
+  50% { top: 100%; }
+  100% { top: 100%; }
 }
 
 /* ============================================================
@@ -531,6 +507,12 @@ ol {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  display: block;
+  transition: var(--transition-base);
+}
+
+.service-card:hover {
+  background: var(--color-bg-alt);
 }
 
 .service-card__image {
@@ -658,7 +640,7 @@ ol {
 }
 
 /* ============================================================
-   CONTACT SECTION (LINE Official Only)
+   CONTACT SECTION
    ============================================================ */
 .contact {
   padding: var(--section-padding) 0;
@@ -785,6 +767,321 @@ ol {
 }
 
 /* ============================================================
+   LP PAGE STYLES (Shared across individual service LPs)
+   ============================================================ */
+
+/* --- LP Hero (smaller variant) --- */
+.lp-hero {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.lp-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.lp-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  transition: transform 6s ease-out;
+}
+
+.lp-hero.is-loaded .lp-hero__bg img {
+  transform: scale(1);
+}
+
+.lp-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(10, 8, 5, 0.75) 0%,
+      rgba(10, 8, 5, 0.25) 50%,
+      rgba(10, 8, 5, 0.1) 100%);
+  z-index: 1;
+}
+
+.lp-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--content-padding) 60px;
+  max-width: 800px;
+}
+
+.lp-hero__label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+}
+
+.lp-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--color-white);
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.lp-hero__lead {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 500px;
+}
+
+/* --- LP About Section --- */
+.lp-about {
+  padding: var(--section-padding) 0;
+  background: var(--color-bg);
+}
+
+.lp-about__inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  text-align: center;
+}
+
+.lp-about__body {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- LP Features Section --- */
+.lp-features {
+  padding: var(--section-padding) 0;
+  background: var(--color-bg-alt);
+}
+
+.lp-features__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+.lp-features__header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.lp-features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.lp-feature-card {
+  text-align: center;
+  padding: 48px 32px;
+  background: var(--color-white);
+  border-radius: 4px;
+  transition: var(--transition-base);
+}
+
+.lp-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
+}
+
+.lp-feature-card__number {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--color-border);
+  margin-bottom: 24px;
+  line-height: 1;
+}
+
+.lp-feature-card__title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.lp-feature-card__desc {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
+/* --- LP Results / Track Record Section --- */
+.lp-results {
+  padding: var(--section-padding) 0;
+  background: var(--color-text);
+  color: var(--color-white);
+}
+
+.lp-results__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+.lp-results__header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.lp-results__header .section-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.lp-results__header .section-heading {
+  color: var(--color-white);
+}
+
+.lp-results__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+}
+
+.lp-result-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px 32px;
+  text-align: center;
+  transition: var(--transition-base);
+}
+
+.lp-result-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lp-result-card__value {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--color-white);
+  margin-bottom: 8px;
+}
+
+.lp-result-card__label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+}
+
+/* --- LP CTA Section --- */
+.lp-cta {
+  padding: var(--section-padding) 0;
+  background: var(--color-bg);
+  text-align: center;
+}
+
+.lp-cta__inner {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+.lp-cta__inner .section-body {
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+/* --- LP Pricing Table --- */
+.lp-pricing {
+  padding: var(--section-padding) 0;
+  background: var(--color-bg);
+}
+
+.lp-pricing__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+.lp-pricing__header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.lp-pricing__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 48px;
+}
+
+.lp-pricing__table th,
+.lp-pricing__table td {
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 20px 24px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.lp-pricing__table th {
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+.lp-pricing__table td {
+  font-weight: 300;
+  color: var(--color-text-secondary);
+}
+
+.lp-pricing__table tbody tr:hover {
+  background: var(--color-bg-alt);
+}
+
+.lp-pricing__total {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+/* --- LP Breadcrumb --- */
+.lp-breadcrumb {
+  position: absolute;
+  bottom: 20px;
+  left: var(--content-padding);
+  z-index: 2;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.lp-breadcrumb a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color var(--transition-fast);
+}
+
+.lp-breadcrumb a:hover {
+  color: var(--color-white);
+}
+
+.lp-breadcrumb__sep {
+  margin: 0 8px;
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
@@ -811,13 +1108,14 @@ ol {
     order: 1;
   }
 
-  .contact__inner {
-    grid-template-columns: 1fr;
-  }
-
   .footer__inner {
     flex-direction: column;
     gap: 40px;
+  }
+
+  .lp-features__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
   }
 }
 
@@ -840,10 +1138,6 @@ ol {
     gap: 24px;
   }
 
-  .contact__form {
-    padding: 32px 24px;
-  }
-
   .footer__nav {
     flex-direction: column;
     gap: 32px;
@@ -853,5 +1147,28 @@ ol {
     flex-direction: column;
     gap: 16px;
     text-align: center;
+  }
+
+  .lp-features__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .lp-results__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-hero {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .lp-pricing__table {
+    font-size: 12px;
+  }
+
+  .lp-pricing__table th,
+  .lp-pricing__table td {
+    padding: 14px 12px;
   }
 }

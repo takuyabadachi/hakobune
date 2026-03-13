@@ -1,6 +1,7 @@
 /* ============================================================
    HAKOBUNE INC. — Main JavaScript
    Scroll animations, navigation, header state
+   Shared across HP and all LP pages
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,18 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.getElementById('navToggle');
   const navOverlay = document.getElementById('navOverlay');
   const navLinks = document.querySelectorAll('[data-nav-link]');
-  const hero = document.querySelector('.hero');
+  const hero = document.querySelector('.hero') || document.querySelector('.lp-hero');
   const fadeElements = document.querySelectorAll('.fade-in');
 
   // ---- Hero Load Animation ----
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      hero.classList.add('is-loaded');
-    }, 100);
-  });
+  if (hero) {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        hero.classList.add('is-loaded');
+      }, 100);
+    });
+  }
 
   // ---- Header Scroll State ----
   const handleHeaderScroll = () => {
+    if (!header) return;
     const scrollY = window.scrollY;
     if (scrollY > 80) {
       header.classList.add('is-scrolled');
@@ -34,36 +38,37 @@ document.addEventListener('DOMContentLoaded', () => {
   handleHeaderScroll();
 
   // ---- Navigation Toggle ----
-  const toggleNav = () => {
-    const isActive = navToggle.classList.toggle('is-active');
-    navOverlay.classList.toggle('is-open', isActive);
-    document.body.style.overflow = isActive ? 'hidden' : '';
+  if (navToggle && navOverlay) {
+    const toggleNav = () => {
+      const isActive = navToggle.classList.toggle('is-active');
+      navOverlay.classList.toggle('is-open', isActive);
+      document.body.style.overflow = isActive ? 'hidden' : '';
 
-    // Force hamburger to white when menu is open
-    if (isActive) {
-      navToggle.querySelectorAll('span').forEach(span => {
-        span.style.background = '#fff';
-      });
-    } else {
-      navToggle.querySelectorAll('span').forEach(span => {
-        span.style.background = '';
-      });
-    }
-  };
+      if (isActive) {
+        navToggle.querySelectorAll('span').forEach(span => {
+          span.style.background = '#fff';
+        });
+      } else {
+        navToggle.querySelectorAll('span').forEach(span => {
+          span.style.background = '';
+        });
+      }
+    };
 
-  navToggle.addEventListener('click', toggleNav);
+    navToggle.addEventListener('click', toggleNav);
 
-  // Close menu on link click
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navToggle.classList.remove('is-active');
-      navOverlay.classList.remove('is-open');
-      document.body.style.overflow = '';
-      navToggle.querySelectorAll('span').forEach(span => {
-        span.style.background = '';
+    // Close menu on link click
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('is-active');
+        navOverlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+        navToggle.querySelectorAll('span').forEach(span => {
+          span.style.background = '';
+        });
       });
     });
-  });
+  }
 
   // ---- Smooth Scroll ----
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -74,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const target = document.querySelector(targetId);
       if (target) {
-        const headerHeight = header.offsetHeight;
+        const headerHeight = header ? header.offsetHeight : 0;
         const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
         window.scrollTo({
           top: targetPosition,
@@ -101,27 +106,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }, observerOptions);
 
   fadeElements.forEach(el => fadeObserver.observe(el));
-
-  // ---- Contact Form ----
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = contactForm.querySelector('.btn');
-      const originalText = btn.textContent;
-      btn.textContent = 'Sent — Thank You';
-      btn.style.background = 'var(--color-text)';
-      btn.style.color = 'var(--color-white)';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.style.color = '';
-        btn.disabled = false;
-        contactForm.reset();
-      }, 3000);
-    });
-  }
 
 });
