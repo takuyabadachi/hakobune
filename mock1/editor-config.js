@@ -16,7 +16,7 @@ window.EDITOR_CONFIG = {
 
   /* ---- API認証シークレット (Vercel EDITOR_API_SECRET と同じ値) ---- */
   /* ⚠️ 本番では環境変数経由で注入するか、別途認証フローを構築 */
-  apiSecret: null,  // Vercel Dashboard で EDITOR_API_SECRET を設定後、ここに同じ値を入れる
+  apiSecret: 'b3afc4d3731a29ef7c3cee2ce944335fcabfd345643d27718bc1d42f7f17f528',
 
   /* ---- ページ一覧 ---- */
   pages: [
