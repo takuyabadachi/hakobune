@@ -56,6 +56,9 @@
     </div>
   </div>
   <script>
+    // ★ ハブページを開いた時点でエディターモードを有効化
+    sessionStorage.setItem('content_editor_mode', 'true');
+    
     const CFG = window.EDITOR_CONFIG || { projectName: 'Site', pages: [] };
     document.getElementById('hubBrand').textContent = CFG.projectName + ' ✦ Content Editor';
     const list = document.getElementById('pageList');
@@ -63,7 +66,12 @@
       const a = document.createElement('a');
       a.className = 'hub__page';
       a.href = p.path;
-      a.onclick = () => sessionStorage.setItem('content_editor_mode', 'true');
+      // ★ sessionStorage書き込みを確実にしてからナビゲーション
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        sessionStorage.setItem('content_editor_mode', 'true');
+        window.location.href = p.path;
+      });
       a.innerHTML = `<span><span class="hub__page-name">${p.name}</span><span class="hub__page-label">${p.label}</span></span><span class="hub__page-arrow">→</span>`;
       list.appendChild(a);
     });
