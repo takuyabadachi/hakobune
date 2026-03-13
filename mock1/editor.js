@@ -120,11 +120,14 @@
       .ce-toast.ce-vis{opacity:1;transform:translateX(-50%) translateY(0)}
       .ce-tog{position:fixed;bottom:28px;right:28px;z-index:10001;width:48px;height:48px;
         background:rgba(26,26,26,.95);border:1px solid ${border};border-radius:14px;
-        display:none;align-items:center;justify-content:center;cursor:pointer;
-        color:${accent};font-size:18px;transition:all .3s;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+        display:flex;align-items:center;justify-content:center;cursor:pointer;
+        color:${accent};font-size:18px;box-shadow:0 8px 30px rgba(0,0,0,.3);
+        opacity:0;transform:scale(.8);pointer-events:none;
+        transition:all .4s cubic-bezier(.25,.46,.45,.94)}
       .ce-tog:hover{background:${accent};color:#1A1A1A}
-      .ce-tog.ce-v{display:flex}
-      .ce-p.ce-hid{display:none}
+      .ce-tog.ce-v{opacity:1;transform:scale(1);pointer-events:auto}
+      .ce-p{transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
+      .ce-p.ce-hid{opacity:0;transform:translateY(20px) scale(.96);pointer-events:none}
       /* Onboarding Modal */
       .ce-ob{position:fixed;inset:0;z-index:20000;background:rgba(0,0,0,.85);
         display:flex;align-items:center;justify-content:center;
@@ -339,10 +342,12 @@
     document.getElementById('ceReset').addEventListener('click', resetPg);
     document.getElementById('ceSub').addEventListener('click', submit);
     document.getElementById('ceMin').addEventListener('click', () => {
-      panel.classList.add('ce-hid'); toggle.classList.add('ce-v');
+      panel.classList.add('ce-hid');
+      setTimeout(() => toggle.classList.add('ce-v'), 150);
     });
     toggle.addEventListener('click', () => {
-      panel.classList.remove('ce-hid'); toggle.classList.remove('ce-v');
+      toggle.classList.remove('ce-v');
+      setTimeout(() => panel.classList.remove('ce-hid'), 150);
     });
   }
 
