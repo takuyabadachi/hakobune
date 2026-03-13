@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Editor — Hakobune Inc.</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="/mock1/favicon_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/mock1/favicon_16.png">
+  <link rel="icon" type="image/png" href="/mock1/favicon.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200;300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lexend Deca', 'Noto Sans JP', sans-serif;
+      background: #1A1A1A;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .hub {
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .hub__brand {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 32px;
+    }
+
+    .hub__title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 200;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hub__subtitle {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+      margin-bottom: 48px;
+      max-width: 400px;
+    }
+
+    .hub__divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin-bottom: 40px;
+    }
+
+    .hub__label {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 20px;
+    }
+
+    .hub__page {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hub__page:hover {
+      padding-left: 8px;
+    }
+
+    .hub__page:hover .hub__page-name {
+      color: #C8A96E;
+    }
+
+    .hub__page:hover .hub__page-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .hub__page-name {
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .hub__page-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.1em;
+      margin-left: 12px;
+    }
+
+    .hub__page-arrow {
+      font-size: 14px;
+      color: #C8A96E;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all 0.3s ease;
+    }
+
+    .hub__footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hub__instructions {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.25);
+      line-height: 2;
+      letter-spacing: 0.02em;
+    }
+
+    .hub__instructions strong {
+      color: #C8A96E;
+      font-weight: 400;
+    }
+
+    .hub__exit-btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 10px 28px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: transparent;
+      color: rgba(255,255,255,0.4);
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hub__exit-btn:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="hub">
+    <div class="hub__brand">Hakobune Inc. ✦ Content Editor</div>
+    <h1 class="hub__title">文言修正</h1>
+    <p class="hub__subtitle">
+      修正したいページを選択してください。<br>
+      テキストをクリックするだけで、直接編集できます。
+    </p>
+
+    <div class="hub__divider"></div>
+
+    <div class="hub__label">Select a page</div>
+
+    <a class="hub__page" href="/mock1/" onclick="activateEdit()">
+      <span><span class="hub__page-name">Home</span><span class="hub__page-label">トップページ</span></span>
+      <span class="hub__page-arrow">→</span>
+    </a>
+    <a class="hub__page" href="/mock1/consulting/" onclick="activateEdit()">
+      <span><span class="hub__page-name">Consulting</span><span class="hub__page-label">コンサルティング</span></span>
+      <span class="hub__page-arrow">→</span>
+    </a>
+    <a class="hub__page" href="/mock1/realestate/" onclick="activateEdit()">
+      <span><span class="hub__page-name">Real Estate</span><span class="hub__page-label">海外不動産</span></span>
+      <span class="hub__page-arrow">→</span>
+    </a>
+    <a class="hub__page" href="/mock1/community/" onclick="activateEdit()">
+      <span><span class="hub__page-name">Community</span><span class="hub__page-label">コミュニティ</span></span>
+      <span class="hub__page-arrow">→</span>
+    </a>
+    <a class="hub__page" href="/mock1/tour/" onclick="activateEdit()">
+      <span><span class="hub__page-name">World Tour</span><span class="hub__page-label">世界一周ツアー</span></span>
+      <span class="hub__page-arrow">→</span>
+    </a>
+    <a class="hub__page" href="/mock1/coin/" onclick="activateEdit()">
+      <span><span class="hub__page-name">Antique Coins</span><span class="hub__page-label">アンティークコイン</span></span>
+      <span class="hub__page-arrow">→</span>
+    </a>
+    <a class="hub__page" href="/mock1/akiya/" onclick="activateEdit()">
+      <span><span class="hub__page-name">Akiya</span><span class="hub__page-label">空き家再生</span></span>
+      <span class="hub__page-arrow">→</span>
+    </a>
+
+    <div class="hub__footer">
+      <p class="hub__instructions">
+        <strong>使い方：</strong> ページ内のテキストをクリックして直接書き換えてください。<br>
+        修正は<strong>自動保存</strong>されます（ブラウザを閉じても残ります）。<br>
+        すべての修正が完了したら、画面右下の<strong>「修正を確定して送信」</strong>を押してください。
+      </p>
+      <button class="hub__exit-btn" onclick="exitEdit()">編集モードを終了</button>
+    </div>
+  </div>
+
+  <script>
+    function activateEdit() {
+      sessionStorage.setItem('hakobune_edit_mode', 'true');
+    }
+    function exitEdit() {
+      sessionStorage.removeItem('hakobune_edit_mode');
+      // Clear all edits
+      const pages = ['/mock1/','/mock1/consulting/','/mock1/realestate/','/mock1/community/','/mock1/tour/','/mock1/coin/','/mock1/akiya/'];
+      pages.forEach(p => localStorage.removeItem('hakobune_edits_' + p));
+      alert('編集モードを終了しました。');
+      window.location.href = '/mock1/';
+    }
+  </script>
+</body>
+</html>
