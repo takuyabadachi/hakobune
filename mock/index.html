@@ -1,243 +1,235 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hakobune Inc. — Navigate the World of Opportunity</title>
-  <meta name="description"
-    content="Hakobune Inc. curates exclusive global experiences, investment opportunities, and a private community for visionary leaders. Overseas real estate, antique coins, world tours, and beyond.">
-  <meta name="theme-color" content="#0a0a0a">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Noto+Sans+JP:wght@100;200;300;400;500&display=swap"
-    rel="stylesheet">
-
+  <title>Hakobune Inc. — 次世代の資産を、次世代と共に。</title>
+  <meta name="description" content="事業継承者コミュニティを軸に、オルタナティブ資産の新しい世界をご提供します。コンサルティング・海外不動産・世界一周ツアー・アンティークコイン・空き家再生。">
+  <meta property="og:title" content="Hakobune Inc. — 次世代の資産を、次世代と共に。">
+  <meta property="og:description" content="事業継承者コミュニティを軸に、オルタナティブ資産の新しい世界をご提供します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hakobune.ltd/mock/">
+  <link rel="icon" type="image/png" sizes="32x32" href="/mock/favicon_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/mock/favicon_16.png">
+  <link rel="icon" type="image/png" href="/mock/favicon.png">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- ========== NAVIGATION ========== -->
-  <nav class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#hero" class="nav__logo">Hakobune</a>
-      <ul class="nav__links">
-        <li><a href="#philosophy" class="nav__link">Philosophy</a></li>
-        <li><a href="#services" class="nav__link">Services</a></li>
-        <li><a href="#experience" class="nav__link">Experience</a></li>
-        <li><a href="#contact" class="nav__link">Contact</a></li>
-      </ul>
-      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </nav>
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <a href="/mock/" class="header__logo">Hakobune</a>
+    <button class="header__nav-toggle" id="navToggle" aria-label="メニュー">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <ul class="mobile-menu__links">
-      <li><a href="#philosophy" class="mobile-menu__link">Philosophy</a></li>
-      <li><a href="#services" class="mobile-menu__link">Services</a></li>
-      <li><a href="#experience" class="mobile-menu__link">Experience</a></li>
-      <li><a href="#contact" class="mobile-menu__link">Contact</a></li>
+  <!-- ========== NAV OVERLAY ========== -->
+  <nav class="nav-overlay" id="navOverlay">
+    <ul class="nav-overlay__list">
+      <li class="nav-overlay__item">
+        <a href="#philosophy" class="nav-overlay__link" data-nav-link>
+          Philosophy
+          <span class="nav-overlay__label">理念</span>
+        </a>
+      </li>
+      <li class="nav-overlay__item">
+        <a href="#services" class="nav-overlay__link" data-nav-link>
+          Services
+          <span class="nav-overlay__label">事業紹介</span>
+        </a>
+      </li>
+      <li class="nav-overlay__item">
+        <a href="#community" class="nav-overlay__link" data-nav-link>
+          Community
+          <span class="nav-overlay__label">コミュニティ</span>
+        </a>
+      </li>
+      <li class="nav-overlay__item">
+        <a href="#contact" class="nav-overlay__link" data-nav-link>
+          Contact
+          <span class="nav-overlay__label">お問い合わせ</span>
+        </a>
+      </li>
     </ul>
-  </div>
+  </nav>
 
   <!-- ========== HERO ========== -->
   <section class="hero" id="hero">
     <div class="hero__bg">
-      <img src="images/hero.png" alt="" class="hero__bg-image" loading="eager">
-      <div class="hero__gradient"></div>
+      <img src="/mock/images/hero.png" alt="Hakobune Inc." width="1920" height="1080">
     </div>
+    <div class="hero__overlay"></div>
     <div class="hero__content">
-      <p class="hero__eyebrow">Navigate the World of Opportunity</p>
-      <h1 class="hero__title">Hakobune</h1>
-      <p class="hero__subtitle">
-        Curating exclusive global experiences<br>
-        and investment pathways for visionary leaders.
-      </p>
+      <p class="hero__subtitle">Hakobune Inc.</p>
+      <h1 class="hero__title">次世代の資産を、<br><em>次世代と共に。</em></h1>
+      <p class="hero__lead">受け継がれる叡智と信頼のもと、<br>オルタナティブ資産の新しい地平を拓く。</p>
+      <a href="https://lin.ee/684bzswg" class="btn btn--white" target="_blank" rel="noopener">LINE公式アカウント</a>
     </div>
     <div class="hero__scroll">
       <span class="hero__scroll-text">Scroll</span>
-      <div class="hero__scroll-line"></div>
+      <span class="hero__scroll-line"></span>
     </div>
   </section>
 
   <!-- ========== PHILOSOPHY ========== -->
-  <section class="section section--elevated philosophy" id="philosophy">
-    <div class="container">
-      <div class="philosophy__inner">
-        <div class="philosophy__visual reveal">
-          <img src="images/philosophy.png" alt="Hakobune Philosophy" class="philosophy__image">
-          <div class="philosophy__image-overlay"></div>
-        </div>
-        <div class="philosophy__content">
-          <div class="reveal">
-            <span class="section__label">Philosophy</span>
-          </div>
-          <blockquote class="philosophy__quote reveal reveal-delay-1">
-            "The Ark for Visionaries"
-          </blockquote>
-          <p class="philosophy__body reveal reveal-delay-2">
-            ハコブネは、先見の明を持つリーダーたちのための方舟です。<br><br>
-            私たちは、世界中の真に価値あるものを厳選し、<br>
-            富裕層コミュニティの中で共有される<br>
-            唯一無二の体験と投資機会を創出します。<br><br>
-            国境を越え、時代を超え、<br>
-            次世代に受け継がれるべき資産と関係を構築する。<br>
-            それがハコブネの使命です。
-          </p>
-          <div class="philosophy__divider reveal reveal-delay-3"></div>
-          <p class="philosophy__signature reveal reveal-delay-3">Hakobune Inc.</p>
-        </div>
-      </div>
+  <section class="philosophy" id="philosophy">
+    <div class="philosophy__inner fade-in">
+      <span class="section-label">Philosophy</span>
+      <blockquote class="philosophy__quote">
+        人脈という資産を形成する。
+      </blockquote>
+      <div class="philosophy__divider"></div>
+      <p class="philosophy__body">
+        株式会社ハコブネは、事業を受け継いだ次世代のリーダーたちが集い、
+        互いの知見と経験を共有するコミュニティを提供します。
+        趣味や関心に合わせた多彩なオルタナティブ資産を通じて、
+        世代を超えた価値の創造と保全を実現します。
+      </p>
     </div>
   </section>
 
   <!-- ========== SERVICES ========== -->
-  <section class="section section--dark" id="services">
+  <section class="services" id="services">
     <div class="container">
-      <div class="reveal">
-        <span class="section__label">Services</span>
+      <div class="services__header fade-in">
+        <span class="section-label">Services</span>
+        <h2 class="section-heading">事業紹介</h2>
+        <p class="section-body" style="margin:0 auto;">多様なオルタナティブ資産を通じて、新たな価値と体験をお届けします。</p>
       </div>
-      <h2 class="section__heading reveal reveal-delay-1">
-        Exclusive Domains
-      </h2>
-      <p class="section__text section__text--jp reveal reveal-delay-2">
-        世界基準の6つの事業領域を通じて、<br>
-        あなたの資産と人生に新たな可能性を開きます。
-      </p>
-
       <div class="services__grid">
-        <!-- 01 Overseas Real Estate -->
-        <div class="service-card reveal">
-          <span class="service-card__number">01</span>
-          <h3 class="service-card__title">Overseas Real Estate</h3>
-          <p class="service-card__title-jp">海外不動産</p>
-          <p class="service-card__desc">
-            アブダビ、エジプトを中心としたグローバル不動産投資。現地視察を通じた確かな目利きと、富裕層ネットワークだからこそ実現する独占的アクセス。
-          </p>
-          <div class="service-card__line"></div>
-        </div>
 
-        <!-- 02 Business Succession -->
-        <div class="service-card reveal reveal-delay-1">
-          <span class="service-card__number">02</span>
-          <h3 class="service-card__title">Succession Community</h3>
-          <p class="service-card__title-jp">事業継承者コミュニティ</p>
-          <p class="service-card__desc">
-            次世代の経営者・後継者のための限定コミュニティ。コンサルティングと不動産投資への導線を備え、ビジネスの多角化を支援。
-          </p>
-          <div class="service-card__line"></div>
-        </div>
+        <!-- Service 01: Community -->
+        <a href="/mock/community/" class="service-card fade-in fade-in-delay-1">
+          <div class="service-card__image">
+            <img src="/mock/images/community.png" alt="事業継承者コミュニティ" width="800" height="600" loading="lazy">
+          </div>
+          <div class="service-card__content">
+            <span class="service-card__number">01</span>
+            <h3 class="service-card__title">事業継承者コミュニティ</h3>
+            <span class="service-card__title-en">Community</span>
+            <p class="service-card__desc">次世代リーダーが集い、知見と経験を共有する招待制コミュニティ。</p>
+          </div>
+        </a>
 
-        <!-- 03 Consulting -->
-        <div class="service-card reveal reveal-delay-2">
-          <span class="service-card__number">03</span>
-          <h3 class="service-card__title">Strategic Consulting</h3>
-          <p class="service-card__title-jp">コンサルティング</p>
-          <p class="service-card__desc">
-            ビジネスの多角化、実物資産への転換、集客の統合戦略。PCM導線の設計から実行まで、ワンストップで伴走。
-          </p>
-          <div class="service-card__line"></div>
-        </div>
+        <!-- Service 02: Consulting -->
+        <a href="/mock/consulting/" class="service-card fade-in fade-in-delay-2">
+          <div class="service-card__image">
+            <img src="/mock/images/consulting.png" alt="コンサルティング" width="800" height="600" loading="lazy">
+          </div>
+          <div class="service-card__content">
+            <span class="service-card__number">02</span>
+            <h3 class="service-card__title">コンサルティング</h3>
+            <span class="service-card__title-en">Consulting</span>
+            <p class="service-card__desc">資産戦略から事業承継まで、包括的な助言をご提供します。</p>
+          </div>
+        </a>
 
-        <!-- 04 Antique Coins -->
-        <div class="service-card reveal">
-          <span class="service-card__number">04</span>
-          <h3 class="service-card__title">Antique Coins</h3>
-          <p class="service-card__title-jp">アンティークコイン</p>
-          <p class="service-card__desc">
-            コミュニティを通じた信頼性の高い売買プラットフォーム。LINEオープンチャットを起点に、Phase 2ではオンラインマーケットプレイスへ。
-          </p>
-          <div class="service-card__line"></div>
-        </div>
+        <!-- Service 03: Real Estate -->
+        <a href="/mock/realestate/" class="service-card fade-in fade-in-delay-3">
+          <div class="service-card__image">
+            <img src="/mock/images/real-estate.png" alt="海外不動産" width="800" height="600" loading="lazy">
+          </div>
+          <div class="service-card__content">
+            <span class="service-card__number">03</span>
+            <h3 class="service-card__title">海外不動産</h3>
+            <span class="service-card__title-en">Overseas Real Estate</span>
+            <p class="service-card__desc">アブダビ・エジプトを中心に、厳選した海外不動産をご紹介します。</p>
+          </div>
+        </a>
 
-        <!-- 05 Vacant House Revival -->
-        <div class="service-card reveal reveal-delay-1">
-          <span class="service-card__number">05</span>
-          <h3 class="service-card__title">House Revival</h3>
-          <p class="service-card__title-jp">空き家再生</p>
-          <p class="service-card__desc">
-            日本国内の遊休不動産を再生し、新たな価値を創出。インターン制度を活用した次世代育成も同時に実現。
-          </p>
-          <div class="service-card__line"></div>
-        </div>
+        <!-- Service 04: Tour -->
+        <a href="/mock/tour/" class="service-card fade-in fade-in-delay-4">
+          <div class="service-card__image">
+            <img src="/mock/images/world-tour.png" alt="世界一周ツアー" width="800" height="600" loading="lazy">
+          </div>
+          <div class="service-card__content">
+            <span class="service-card__number">04</span>
+            <h3 class="service-card__title">世界一周ツアー</h3>
+            <span class="service-card__title-en">World Tour</span>
+            <p class="service-card__desc">資産視察と関係深化を兼ねた、特別な旅のご提案。</p>
+          </div>
+        </a>
 
-        <!-- 06 World Tour -->
-        <div class="service-card reveal reveal-delay-2">
-          <span class="service-card__number">06</span>
-          <h3 class="service-card__title">World Tour</h3>
-          <p class="service-card__title-jp">世界一周ツアー</p>
-          <p class="service-card__desc">
-            不動産視察と関係深化を兼ねた世界一周ツアー。投資先の体験と、メンバー間の絆を同時に深めるエクスクルーシブな旅。
-          </p>
-          <div class="service-card__line"></div>
-        </div>
+        <!-- Service 05: Coin -->
+        <a href="/mock/coin/" class="service-card fade-in fade-in-delay-5">
+          <div class="service-card__image">
+            <img src="/mock/images/antique-coins.png" alt="アンティークコイン" width="800" height="600" loading="lazy">
+          </div>
+          <div class="service-card__content">
+            <span class="service-card__number">05</span>
+            <h3 class="service-card__title">アンティークコイン</h3>
+            <span class="service-card__title-en">Antique Coins</span>
+            <p class="service-card__desc">歴史的価値と資産性を兼ね備えたコレクションをご案内します。</p>
+          </div>
+        </a>
+
+        <!-- Service 06: Akiya -->
+        <a href="/mock/akiya/" class="service-card fade-in fade-in-delay-6">
+          <div class="service-card__image">
+            <img src="/mock/images/renovation.png" alt="空き家再生" width="800" height="600" loading="lazy">
+          </div>
+          <div class="service-card__content">
+            <span class="service-card__number">06</span>
+            <h3 class="service-card__title">空き家再生</h3>
+            <span class="service-card__title-en">Akiya Renovation</span>
+            <p class="service-card__desc">社会貢献と資産価値創造を融合するリノベーションプロジェクト。</p>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
 
-  <!-- ========== EXPERIENCE ========== -->
-  <section class="section experience" id="experience">
-    <div class="experience__bg">
-      <img src="images/experience.png" alt="" class="experience__bg-image" loading="lazy">
-      <div class="experience__overlay"></div>
-    </div>
-    <div class="container">
-      <div class="experience__content">
-        <p class="experience__eyebrow reveal">Global Experience</p>
-        <h2 class="experience__title reveal reveal-delay-1">
-          Beyond Borders,<br>
-          Beyond Expectations.
-        </h2>
-        <p class="experience__text reveal reveal-delay-2">
-          ハコブネは、世界各地で厳選された投資機会と<br>
-          かけがえのない体験を提供します。<br>
-          アブダビの最先端不動産から、エジプトの歴史的資産まで—<br>
-          私たちと共に、世界をフィールドにした資産形成の旅へ。
+  <!-- ========== COMMUNITY ========== -->
+  <section class="community" id="community">
+    <div class="community__inner">
+      <div class="community__content fade-in">
+        <span class="section-label">Community</span>
+        <h2 class="section-heading">選ばれた方々の、<br>特別な場所。</h2>
+        <p class="section-body">
+          事業継承者コミュニティは、2代目・3代目の経営者が互いの経験を共有し、
+          新たなビジネスチャンスと人脈を育む招待制のプラットフォームです。
+          共通の課題と志を持つ同世代のリーダーとともに、次の時代を切り拓きます。
         </p>
-        <div class="experience__stats reveal reveal-delay-3">
-          <div class="stat">
-            <p class="stat__number" data-count="15" data-suffix="+">0</p>
-            <p class="stat__label">Countries</p>
+        <div class="community__features">
+          <div class="community__feature">
+            <div class="community__feature-number">500+</div>
+            <div class="community__feature-text">Members</div>
           </div>
-          <div class="stat">
-            <p class="stat__number" data-count="200" data-suffix="+">0</p>
-            <p class="stat__label">Members</p>
+          <div class="community__feature">
+            <div class="community__feature-number">50+</div>
+            <div class="community__feature-text">Events / Year</div>
           </div>
-          <div class="stat">
-            <p class="stat__number" data-count="50" data-suffix="+">0</p>
-            <p class="stat__label">Projects</p>
+          <div class="community__feature">
+            <div class="community__feature-number">∞</div>
+            <div class="community__feature-text">Possibilities</div>
           </div>
         </div>
+        <a href="/mock/community/" class="btn btn--white">Join Our Community</a>
+      </div>
+      <div class="community__image">
+        <img src="/mock/images/community.png" alt="事業継承者コミュニティ" width="960" height="640" loading="lazy">
       </div>
     </div>
   </section>
 
   <!-- ========== CONTACT ========== -->
-  <section class="section section--elevated contact" id="contact">
+  <section class="contact" id="contact">
     <div class="container">
-      <div class="contact__inner">
-        <div class="reveal">
-          <span class="section__label">Contact</span>
-        </div>
-        <h2 class="contact__heading reveal reveal-delay-1">
-          Begin Your Journey
-        </h2>
-        <p class="contact__text reveal reveal-delay-2">
-          ハコブネへのご参加、事業に関するお問い合わせは<br>
-          下記よりご連絡ください。
+      <div class="contact__inner fade-in">
+        <span class="section-label">Contact</span>
+        <h2 class="section-heading">お問い合わせ</h2>
+        <p class="section-body" style="margin:0 auto 48px;">
+          サービスに関するご質問・ご相談は、<br>
+          LINE公式アカウントよりお気軽にお問い合わせください。
         </p>
-        <a href="mailto:contact@hakobune.co.jp" class="contact__cta reveal reveal-delay-3">
-          <span>Get in Touch</span>
-        </a>
+        <div class="contact__line-btn">
+          <a href="https://lin.ee/684bzswg" class="btn btn--line" target="_blank" rel="noopener">LINE公式アカウント</a>
+        </div>
+        <p class="contact__note">24時間受付・お気軽にメッセージをお送りください</p>
       </div>
     </div>
   </section>
@@ -246,19 +238,42 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
-        <span class="footer__logo">Hakobune</span>
-        <ul class="footer__links">
-          <li><a href="#philosophy" class="footer__link">Philosophy</a></li>
-          <li><a href="#services" class="footer__link">Services</a></li>
-          <li><a href="#experience" class="footer__link">Experience</a></li>
-          <li><a href="#contact" class="footer__link">Contact</a></li>
-        </ul>
-        <span class="footer__copy">© 2026 Hakobune Inc. All Rights Reserved.</span>
+        <div class="footer__brand">
+          <div class="footer__logo">Hakobune Inc.</div>
+          <p class="footer__desc">
+            次世代の資産を、次世代と共に。<br>
+            オルタナティブ資産の新しい地平を拓く。
+          </p>
+        </div>
+        <nav class="footer__nav">
+          <div class="footer__nav-group">
+            <h4>Services</h4>
+            <a href="/mock/community/">事業継承者コミュニティ</a>
+            <a href="/mock/consulting/">コンサルティング</a>
+            <a href="/mock/realestate/">海外不動産</a>
+            <a href="/mock/tour/">世界一周ツアー</a>
+            <a href="/mock/coin/">アンティークコイン</a>
+            <a href="/mock/akiya/">空き家再生</a>
+          </div>
+          <div class="footer__nav-group">
+            <h4>Company</h4>
+            <a href="#philosophy">Philosophy</a>
+            <a href="#community">Community</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 Hakobune Inc. All rights reserved.</p>
+        <div class="footer__social">
+          <a href="https://lin.ee/684bzswg" target="_blank" rel="noopener">LINE公式</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="main.js"></script>
+  <script src="editor-config.js"></script>
+  <script src="editor.js"></script>
 </body>
-
 </html>

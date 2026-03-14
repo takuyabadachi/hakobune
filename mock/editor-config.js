@@ -20,13 +20,13 @@ window.EDITOR_CONFIG = {
 
   /* ---- ページ一覧 ---- */
   pages: [
-    { path: '/mock1/',            name: 'Home',           label: 'トップページ' },
-    { path: '/mock1/consulting/', name: 'Consulting',     label: 'コンサルティング' },
-    { path: '/mock1/realestate/', name: 'Real Estate',    label: '海外不動産' },
-    { path: '/mock1/community/',  name: 'Community',      label: 'コミュニティ' },
-    { path: '/mock1/tour/',       name: 'World Tour',     label: '世界一周ツアー' },
-    { path: '/mock1/coin/',       name: 'Antique Coins',  label: 'アンティークコイン' },
-    { path: '/mock1/akiya/',      name: 'Akiya',          label: '空き家再生' }
+    { path: '/mock/',            name: 'Home',           label: 'トップページ' },
+    { path: '/mock/consulting/', name: 'Consulting',     label: 'コンサルティング' },
+    { path: '/mock/realestate/', name: 'Real Estate',    label: '海外不動産' },
+    { path: '/mock/community/',  name: 'Community',      label: 'コミュニティ' },
+    { path: '/mock/tour/',       name: 'World Tour',     label: '世界一周ツアー' },
+    { path: '/mock/coin/',       name: 'Antique Coins',  label: 'アンティークコイン' },
+    { path: '/mock/akiya/',      name: 'Akiya',          label: '空き家再生' }
   ],
 
   /* ---- 編集対象セレクタ ---- */
