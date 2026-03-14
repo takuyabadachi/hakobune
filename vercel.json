@@ -1,10 +1,22 @@
 {
   "trailingSlash": true,
+  "functions": {
+    "api/line-webhook.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
   "redirects": [
     {
       "source": "/",
       "destination": "/ixconsulting/",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/line-webhook",
+      "destination": "/api/line-webhook"
     }
   ]
 }

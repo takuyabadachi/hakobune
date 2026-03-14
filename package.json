@@ -1,31 +1,39 @@
 {
-  "name": "@takuyabadachi/content-editor",
-  "version": "1.0.0",
-  "description": "Inline content editor for static websites. Clients edit text directly on the page, changes auto-save and commit via GitHub API.",
+  "name": "@takuyabadachi/hakobune",
+  "version": "2.0.0",
+  "description": "Hakobune Inc. — Website + LINE AI Business Assistant",
+  "type": "module",
   "main": "editor.js",
   "files": [
     "editor.js",
     "editor-config.example.js",
     "middleware.js",
     "api/apply-edits.js",
+    "api/line-webhook.js",
+    "lib/",
     "edit/index.html",
     "README.md"
   ],
   "keywords": [
     "content-editor",
-    "inline-editing",
-    "static-site",
-    "vercel",
-    "github-api",
-    "contenteditable"
+    "line-bot",
+    "grok-ai",
+    "business-assistant",
+    "vercel"
   ],
   "author": "Takuya Badachi",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/takuyabadachi/content-editor"
+    "url": "https://github.com/takuyabadachi/hakobune"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@line/bot-sdk": "^10.0.0",
+    "openai": "^4.60.0",
+    "@supabase/supabase-js": "^2.45.0"
   }
 }
+
