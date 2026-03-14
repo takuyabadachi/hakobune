@@ -151,6 +151,35 @@
       .ce-ob__skip{display:block;margin-top:16px;font-size:10px;color:rgba(255,255,255,.25);
         letter-spacing:.1em;cursor:pointer;border:none;background:none;font-family:inherit;transition:color .2s}
       .ce-ob__skip:hover{color:rgba(255,255,255,.5)}
+      /* ---- Mobile Responsive ---- */
+      @media(max-width:600px){
+        body.ce-on::before{font-size:9px;padding:8px 12px;letter-spacing:.15em}
+        body.ce-on{padding-top:32px!important}
+        body.ce-on .header{top:32px!important}
+        .ce-p{bottom:12px;right:12px;left:12px;width:auto}
+        .ce-p__i{padding:16px;border-radius:14px}
+        .ce-p__h{margin-bottom:12px;padding-bottom:10px}
+        .ce-p__br{font-size:8px;letter-spacing:.2em}
+        .ce-p__r{margin-bottom:4px}
+        .ce-p__n{font-size:28px}
+        .ce-p__s{font-size:9px}
+        .ce-p__pg{font-size:9px;margin-bottom:12px}
+        .ce-p__bs{gap:4px;margin-bottom:8px}
+        .ce-b{padding:8px 4px;font-size:9px;border-radius:8px}
+        .ce-undo{gap:4px;margin-bottom:10px}
+        .ce-ub{padding:6px;font-size:8px}
+        .ce-sub{padding:10px;font-size:10px;border-radius:10px;margin-bottom:10px}
+        .ce-pgs{display:none}
+        .ce-tog{bottom:12px;right:12px;width:40px;height:40px;font-size:14px;border-radius:12px}
+        .ce-toast{font-size:10px;padding:10px 20px;bottom:12px;border-radius:10px}
+        .ce-ob__card{padding:28px 20px;border-radius:16px}
+        .ce-ob__title{font-size:20px}
+        .ce-ob__steps{margin-bottom:24px}
+        .ce-ob__step{gap:12px;margin-bottom:16px}
+        .ce-ob__num{width:28px;height:28px;font-size:11px}
+        .ce-ob__text{font-size:12px}
+        .ce-ob__go{padding:12px 36px;font-size:11px;border-radius:10px}
+      }
     `;
     document.head.appendChild(s);
   }
