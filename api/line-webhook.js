@@ -10,8 +10,9 @@ import {
   saveMessage, getSession, saveSession, clearSession,
   upsertGroup, isOptedOut, setOptout,
   searchMessages, getRecentMessages,
+  createTask, listTasks, completeTask, deleteTask, findUserByName,
 } from '../lib/store.js';
-import { helpFlex, privacyNoticeFlex, reviewResultsFlex } from '../lib/flex-templates.js';
+import { helpFlex, privacyNoticeFlex, reviewResultsFlex, taskCardFlex, taskListFlex } from '../lib/flex-templates.js';
 
 // Disable Vercel body parsing to get raw body for signature verification
 export const config = {
@@ -67,6 +68,12 @@ async function processEvent(event) {
     const groupId = event.source.groupId;
     await upsertGroup(groupId, '');
     await reply(event.replyToken, [privacyNoticeFlex()]);
+    return;
+  }
+
+  // ─── Postback (Flex Message button taps) ───
+  if (event.type === 'postback') {
+    await handlePostback(event);
     return;
   }
 
@@ -165,6 +172,12 @@ async function processEvent(event) {
     return;
   }
 
+  // ─── #task — Task management ───
+  if (mode === 'task') {
+    await handleTaskCommand(event, msgBody, userId, displayName, groupId);
+    return;
+  }
+
   // ─── COptO guardrail check ───
   if (detectCoptoRedirect(msgBody || text)) {
     await reply(event.replyToken,
@@ -198,5 +211,129 @@ async function processEvent(event) {
     }
     // LINE allows max 5 messages per reply
     await reply(event.replyToken, chunks.slice(0, 5));
+  }
+}
+
+// ─── Task Command Handler ───
+
+async function handleTaskCommand(event, body, userId, displayName, groupId) {
+  const groupKey = groupId || 'dm';
+
+  // #task 一覧 — List open tasks
+  if (!body || body === '一覧' || body === 'list') {
+    const tasks = await listTasks(groupKey);
+    await reply(event.replyToken, [taskListFlex(tasks)]);
+    return;
+  }
+
+  // #task 完了一覧 — List completed tasks
+  if (body === '完了一覧' || body === 'done') {
+    const tasks = await listTasks(groupKey, 'done');
+    await reply(event.replyToken, tasks.length > 0
+      ? [taskListFlex(tasks)]
+      : '完了済みタスクはありません。'
+    );
+    return;
+  }
+
+  // ─── Create a new task ───
+  // Parse: @担当者 タスク内容 日付
+  let assignedToName = displayName;
+  let assignedTo = userId;
+  let title = body;
+
+  // Extract @mention
+  const mentionMatch = body.match(/[@＠]([^\s]+)\s*/);
+  if (mentionMatch) {
+    const mentionName = mentionMatch[1];
+    title = body.replace(mentionMatch[0], '').trim();
+    // Look up user by name in message history
+    const found = await findUserByName(groupKey, mentionName);
+    if (found) {
+      assignedTo = found.line_user_id;
+      assignedToName = found.display_name;
+    } else {
+      assignedToName = mentionName;
+      assignedTo = ''; // Unknown user, store name only
+    }
+  }
+
+  // Extract date (simple patterns: 明日, 今日, M/D, M月D日, YYYY/M/D)
+  let dueDate = null;
+  const now = new Date();
+
+  if (/明日/.test(title)) {
+    dueDate = new Date(now);
+    dueDate.setDate(dueDate.getDate() + 1);
+    title = title.replace(/明日/, '').trim();
+  } else if (/今日/.test(title)) {
+    dueDate = new Date(now);
+    title = title.replace(/今日/, '').trim();
+  } else if (/明後日/.test(title)) {
+    dueDate = new Date(now);
+    dueDate.setDate(dueDate.getDate() + 2);
+    title = title.replace(/明後日/, '').trim();
+  }
+
+  // M/D or M月D日 patterns
+  const dateMatch = title.match(/(\d{1,2})[/月](\d{1,2})[日]?/);
+  if (dateMatch && !dueDate) {
+    dueDate = new Date(now.getFullYear(), parseInt(dateMatch[1]) - 1, parseInt(dateMatch[2]));
+    // If the date is in the past, assume next year
+    if (dueDate < now) dueDate.setFullYear(dueDate.getFullYear() + 1);
+    title = title.replace(dateMatch[0], '').trim();
+  }
+
+  // Time pattern: HH:MM or HH時
+  const timeMatch = title.match(/(\d{1,2})[:時](\d{0,2})[分]?/);
+  if (timeMatch && dueDate) {
+    dueDate.setHours(parseInt(timeMatch[1]), parseInt(timeMatch[2] || '0'), 0, 0);
+    title = title.replace(timeMatch[0], '').trim();
+  } else if (dueDate) {
+    dueDate.setHours(9, 0, 0, 0); // Default to 9:00 AM
+  }
+
+  // Clean up remaining particles
+  title = title.replace(/^[にをでまで]+|[にをでまで]+$/g, '').trim();
+
+  if (!title) {
+    await reply(event.replyToken, '📋 タスク内容を入力してください。\n\n例：#task @佐藤 見積もり取得 3/20');
+    return;
+  }
+
+  const task = await createTask({
+    groupId: groupKey,
+    createdBy: userId,
+    createdByName: displayName,
+    assignedTo,
+    assignedToName,
+    title,
+    dueDate: dueDate?.toISOString() || null,
+  });
+
+  if (task) {
+    await reply(event.replyToken, [taskCardFlex(task)]);
+  } else {
+    await reply(event.replyToken, 'タスクの登録に失敗しました。もう一度お試しください。');
+  }
+}
+
+// ─── Postback Handler (Flex Message button taps) ───
+
+async function handlePostback(event) {
+  const data = new URLSearchParams(event.postback.data);
+  const action = data.get('action');
+  const id = data.get('id');
+
+  if (!action || !id) return;
+
+  if (action === 'complete_task') {
+    const task = await completeTask(id);
+    if (task) {
+      await reply(event.replyToken, `✅ 完了：${task.title}\n👤 ${task.assigned_to_name || ''}`);
+    }
+  } else if (action === 'delete_task') {
+    await deleteTask(id);
+    await reply(event.replyToken, '🗑️ タスクを削除しました。');
   }
 }
